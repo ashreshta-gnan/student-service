@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+
+	<entry
+		key="registerUser">
+		INSERT INTO users(name, email, password, role)
+		VALUES(:name, :email, :password, :role)
+	</entry>
+	
+	<entry
+		key="login">
+		SELECT* FROM users WHERE email = :email AND password = :password
+	</entry>
+	
+	<entry
+		key="createTicket">
+		INSERT INTO tickets(user_id, title, description, category, priority,
+		status)
+		VALUES(:userId, :title, :description, :category, :priority,'PENDING')
+	</entry>
+
+	<entry
+		key="getAllTickets">
+		SELECT id,user_id, title, description, category, priority, status, comments
+		FROM tickets
+	</entry>
+	
+	<entry
+		key="getAllTicketsForUser">
+		SELECT id,user_id, title, description, category, priority, status, comments
+		FROM tickets
+		WHERE user_id = :userId
+	</entry>
+	
+	<entry
+		key="getTicketById">
+		SELECT id,user_id, title, description, category, priority, status, comments
+		FROM tickets
+		WHERE  id =:id
+	</entry>
+	
+	<entry
+		key="updateTicket">
+		UPDATE tickets set status =:status, comments = :comments
+		WHERE id =:id
+	</entry>
+	
+	
+	
+	
+
+</properties>
